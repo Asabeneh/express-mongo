@@ -4,9 +4,7 @@
 body{
     font-family: 'Roboto', sans-serif;
 }
-h1{
-    text-align: center;
-}
+
 h1,h2{
     /* font-family:fantasy;
      font-family: 'Tangerine', serif; */
@@ -15,6 +13,9 @@ h1,h2{
     color:orange;
     /* background: #f1f1f1; */
     margin: 3px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
 }
 
 img{
@@ -27,7 +28,7 @@ img{
     flex-wrap: wrap;
     justify-content: space-around;
     width:90%;
-    border:10px solid rgba(147, 177, 107,0.25);
+    border:2px dashed rgba(147, 177, 107,0.25);
     border-radius: 8px;
     margin: 0 auto;
 }
@@ -59,6 +60,11 @@ li{
 
     margin-left:10px;
     list-style:none;
+    display: inline-block
+    
+}
+a{
+    text-decoration: none;
 }
 .student-detail{
     line-height: 150%;

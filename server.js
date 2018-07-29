@@ -7,8 +7,6 @@ const {MongoClient} = require('mongodb');
 const nodemailer = require('nodemailer');
 const methodOverride = require('method-override');
 
-
-
 const app = express();
 
 app.set('view engine','ejs');
@@ -19,8 +17,6 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 app.use(fileUpload());
-
-
 
 
 const transporter = nodemailer.createTransport({
@@ -213,7 +209,6 @@ app.post('/students',(req, res) => {
              res.redirect("/");
        }
      );
-
 
 });
 
