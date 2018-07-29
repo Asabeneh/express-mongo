@@ -1,20 +1,15 @@
-const http = require("http");
-const fs = require("fs");
 const express = require('express');
 const bodyParser = require('body-parser');
 const fileUpload = require("express-fileupload");
-const path = require('path');
-const { parse } = require('querystring');
-const formidable = require('formidable')
 const {studentsInfo} = require("./studentsInfo");
 const mongoose = require('mongoose');
+const {MongoClient} = require('mongodb');
+const nodemailer = require('nodemailer');
+const methodOverride = require('method-override');
 
-mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODU_URI || 'mongodb://localhost:27017/StudentsInfo');
+
 
 const app = express();
-
-console.log(path.join(__dirname, 'public'));
 
 app.set('view engine','ejs');
 app.use(express.static(__dirname + '/assets')); 
@@ -25,69 +20,159 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 app.use(fileUpload());
 
-let individualUser;
 
+
+
+const transporter = nodemailer.createTransport({
+    service:'gmail',
+    auth:{
+        user:'gudukasa98@gmail.com',
+        pass:'a2169598'
+    }
+});
+
+app.use((req, res, next) => {
+
+if(req.method ==='POST'){
+    let {firstName,lastName,title, nationality,src,whySofterDeveloper,longTermVision,motivatesMe,favoriteQuote,joinedOn } = req.body;
+    console.log(firstName,lastName,title,nationality)
+    const applicantInfo = `<h1>Name:${firstName} ${lastName}</h1>
+    <h4>Title:${title}</h4>
+    <h4>Nationality:${nationality}</h4><p>Added on the page</p>`
+
+    const mailOptions = {
+        from:'asabeneh@gmail.com',
+        to:'asabeneh@gmail.com',
+        subject:'Sending Email using Node.js',
+        html:`<h1>Applicant Info:${applicantInfo}`
+    }
+    
+    transporter.sendMail(mailOptions,(e,info) => {
+        if(e){
+            console.log(e)
+        }
+        else{
+            console.log('Email sent: ' + info.response)
+        }
+    });
+
+}
+    
+next();
+})
+
+
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGODU_URI || 'mongodb://washera:Asab216216216@ds259111.mlab.com:59111/washera',{ useNewUrlParser: true });
+
+const Student = mongoose.model('Student',{
+    firstName:{
+        type:String
+
+    },
+    lastName:{
+        type:String
+
+    },
+    title:{
+        type:String
+
+    },
+    nationality:{
+        type:String
+
+    },
+    src:{
+        type:String
+
+    },
+    alt:{
+        type:String
+
+    },
+    skills:{
+        type:Array
+    },
+    whySofterDeveloper:{
+        type:String
+    },
+    longTermVision:{
+        type:String
+    },
+    motivatesMe:{
+        type:String
+    },
+    favoriteQuote:{
+        type:String
+    },
+    joinedOn:{
+        type:String
+    }
+
+})
+
+// Student.collection.insert(studentsInfo)
+
+app.delete('/', function (req, res) {
+    res.send('DELETE request to homepage');
+  });
 
 app.get('/',(req,res) => {
-    res.render('students',{studentsInfo})
+    Student.find().then((doc) => {
+        if(!doc){
+            res.status(404).send('Not Found')
+        }
+        res.render('students',{studentsInfo: doc})
+    },(e)=> {
+        res.status(400).send(e)
+
+    })
+   
 })
+
 app.get('/students/api',(req, res) => {
-    res.json(studentsInfo)
+    Student.find().then((doc) => {
+        if(!doc){
+            res.status(404).send('Not Found')
+        }
+        res.json(doc)
+    },(e)=> {
+        res.status(400).send(e)
+    })
+   
 });
 
 app.get('/students/api/:id', (req, res) => {
     const id = req.params.id;
-    let flag = false;
-    for (let i = 0; i < studentsInfo.length; i++) {
-        if (studentsInfo[i]._id == id) {
-            individualUser = studentsInfo[i];
-            console.log(studentsInfo[i].nationality)
-            flag = true;
-            res.json(studentsInfo[i]);
-            break;
+    Student.findById(id).then((doc) => {
+        if(!doc){
+            res.status(404).send('Not Found')
         }
-    }
-    if (!flag) {
-        console.log('User was not found.')
-        res.render("notFound")
-    }
+        res.json(doc)
+    },(e)=> {
+        res.status(400).send(e)
+    })
 
 });
 
 app.get('/students/:id', (req, res) => {
     const id = req.params.id;
-    let flag = false;
-    for (let i = 0; i < studentsInfo.length; i++) {
-        if (studentsInfo[i]._id == id) {
-            individualUser = studentsInfo[i];
-            console.log(studentsInfo[i].nationality)
-            flag = true;
-            res.render("student", studentsInfo[i]);
-            break;
-        }
-    }
-    if (!flag) {
-        console.log('User was not found.')
-        res.render("notFound")
-    }
+
+    Student.findById(id).then((doc) => {
+        res.render("student", doc);
+    },(e) => {
+        res.render('notFound')
+    });
 
 });
 
 app.get('/add-student',(req,res) =>{
-    console.log(req.body)
     res.render('addStudent')
 })
 
 
 app.post('/students',(req, res) => {
-    let id = studentsInfo.length + 1;
- 
-    // console.log('what is this file', req.files.src);
-    console.log('what is it', req.files);
-    console.log(req.body);
     let skillList = req.body.skills.trim().split(', ');
-    // console.log(skillList)
-  
      if (!req.files) return res
          .status(400)
          .send("No files were uploaded.");
@@ -99,21 +184,36 @@ app.post('/students',(req, res) => {
        __dirname + "/assets/images/" + sampleFile.name,
        function(err) {
          if (err) return res.status(500).send(err);
-          req.body._id = id;
+
           req.body.src = sampleFile.name;
           req.body.alt = sampleFile.name.slice(0, sampleFile.name.length-4);
           req.body.skills = skillList;
 
-             studentsInfo.push(req.body);
+          const newStudent = new Student({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            title: req.body.title,
+            nationality: req.body.nationality,
+            src: req.body.src,
+            alt: req.body.alt,
+            skills:req.body.skills,
+            whySofterDeveloper:req.body.whySofterDeveloper,
+            longTermVision:req.body.longTermVision,
+            motivatesMe:req.body.motivatesMe,
+            favoriteQuote:req.body.favoriteQuote,
+            joinOn:req.body.joinedOn
+          });
+
+          newStudent.save().then((doc) => {
+            console.log(JSON.stringify(doc, undefined, 4))
+          },(e) => {
+              console.log('Unable to save')
+          })
+
              res.redirect("/");
        }
      );
 
-    
-    // const {_id:id, firstName,lastName,title,nationality, whySoftwareDeveloper, favoriteQuote, src, skilss} = req.body;
-    // console.log(req.body)
-    
-    // fs.createWriteStream(__dirname + '/assets/images/' + `${photo}`);
 
 });
 
@@ -129,7 +229,6 @@ app.delete('/students/:id',(req,res) => {
         }
     }
     if(!flag){
-        console.log('User was not found with this ID.')
         res.render("notFound")
     }
     else{
@@ -163,7 +262,6 @@ app.put("/students/edit", (req, res) => {
 });
 
 
-console.log(individualUser)
 app.listen(port,  () => {
     console.log(`Server is running on port ${port}....`)
 });

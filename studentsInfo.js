@@ -1,6 +1,6 @@
 const studentsInfo = [
   {
-    _id: 1,
+ 
     firstName: "Rasbin",
     lastName: "",
     title: "Junior Developer",
@@ -25,7 +25,7 @@ const studentsInfo = [
   },
 
   {
-    _id: 2,
+
     firstName: "Aditya",
     lastName: "Gyawali",
     title: "Trainee",
@@ -42,7 +42,7 @@ const studentsInfo = [
   },
 
   {
-    _id: 3,
+
     firstName: "Senad",
     lastName: "Maljici",
     title: "Junior Javascript Developer ",
@@ -60,7 +60,7 @@ const studentsInfo = [
     joinedOn: "04.12.2017"
   },
   {
-    _id: 4,
+
     firstName: "Niloofar",
     lastName: "Motamed",
     title: "Junior developer",
@@ -78,7 +78,7 @@ const studentsInfo = [
     joinedOn: "04.12.2017"
   },
   {
-    _id: 5,
+
     firstName: "Sanjog",
     lastName: "Shrestha",
     title: "Junior Developer",
@@ -93,7 +93,7 @@ const studentsInfo = [
     joinedOn: "04.12.2017"
   },
   {
-    _id: 6,
+  
     firstName: "Pragya",
     lastName: "Gupta",
     title: "Junior Web Developer",
@@ -108,7 +108,7 @@ const studentsInfo = [
     joinedOn: "04-12-2017"
   },
   {
-    _id: 7,
+
     firstName: "Mohammed",
     lastName: "Mansoor",
     title: "Junior web developer",
@@ -134,7 +134,7 @@ const studentsInfo = [
   },
 
   {
-    _id: 8,
+
     firstName: "Hoang Anh",
     lastName: "Vo",
     title: "Junior Web Developer",
@@ -164,7 +164,7 @@ const studentsInfo = [
     joinedOn: "04.12.2017"
   },
   {
-    _id: 9,
+
     firstName: " Tareq",
     lastName: "Mahmud",
     title: "Aspiring full stack developer",
@@ -189,7 +189,7 @@ const studentsInfo = [
     joinedOn: "31.01.2018"
   },
   {
-    _id: 10,
+
     firstName: "Abdirahman",
     lastName: "Ali",
     title: "",
@@ -204,7 +204,7 @@ const studentsInfo = [
     joinedOn: "04/12/2017"
   },
   {
-    _id: 11,
+
     firstName: "Sandhya",
     lastName: "Mahat",
     title: "Junior Web Developer",
@@ -230,7 +230,7 @@ const studentsInfo = [
     joinedOn: "04/12/2017"
   },
   {
-    _id: 12,
+
     firstName: "Olujuwon Ayoseyi",
     lastName: "Alabi",
     title: "Developer",
@@ -259,7 +259,7 @@ const studentsInfo = [
   },
 
   {
-    _id: 13,
+
     firstName: "Quoc Viet",
     lastName: "Dang",
     title: "Trainee",
@@ -274,7 +274,7 @@ const studentsInfo = [
     joinedOn: "04-2018"
   },
   {
-    _id: 14,
+ 
     firstName: "Jaya Kumar",
     lastName: "Bidari",
     title: "Junior Developer",
@@ -299,7 +299,7 @@ const studentsInfo = [
     joinedOn: "16/04/2018"
   },
   {
-    _id: 15,
+
     firstName: "Sravanthi ",
     lastName: "Bandaru",
     title: "",
@@ -317,7 +317,7 @@ const studentsInfo = [
   },
 
   {
-    _id: 16,
+
     firstName: "Packia Sheela ",
     lastName: "Varadhan",
     title: "Trainee at Integrify",
@@ -332,7 +332,7 @@ const studentsInfo = [
     joinedOn: ""
   },
   {
-    _id: 17,
+ 
     firstName: "Trung",
     lastName: "Hoang",
     title: "dev-wannabe",
@@ -349,7 +349,7 @@ const studentsInfo = [
   },
 
   {
-    _id: 18,
+
     firstName: "Christian",
     lastName: "Hamamdjian",
     title: "AD, Web Developer",
@@ -366,7 +366,7 @@ const studentsInfo = [
     joinedOn: "16/04/2018"
   },
   {
-    _id: 19,
+ 
     firstName: "Katarina",
     lastName: "Khan",
     title: "Trainee Web Developer",
@@ -381,7 +381,7 @@ const studentsInfo = [
     joinedOn: "16-04-2018"
   },
   {
-    _id: 20,
+   
     firstName: "Pok Tik Benjamin",
     lastName: "Leung",
     title: "Trainee Web Developer",
@@ -400,7 +400,7 @@ const studentsInfo = [
     joinedOn: "16.04.2018"
   },
   {
-    _id: 21,
+
     firstName: "Dita",
     lastName: "Rahmane",
     title: "Trainee",
@@ -416,7 +416,7 @@ const studentsInfo = [
     joinedOn: "16.04.2018"
   },
   {
-    _id: 22,
+   
     firstName: "Nghia(Niko)",
     lastName: "Le",
     title: "Student",
@@ -431,7 +431,7 @@ const studentsInfo = [
     joinedOn: "16.04.2018"
   },
   {
-    _id: 23,
+    
     firstName: "Hai",
     lastName: "Truong",
     title: "Trainee",
@@ -446,7 +446,7 @@ const studentsInfo = [
     joinedOn: "16.04.2018"
   },
   {
-    _id: 24,
+   
     firstName: "Phuoc",
     lastName: "Nguyen",
     title: "Integrify Trainee",
@@ -461,7 +461,7 @@ const studentsInfo = [
     joinedOn: "30.04.2018"
   },
   {
-    _id: 25,
+ 
     firstName: "Andrew",
     lastName: "Zheng",
     title: "Backend-developer/DevOps",
@@ -476,7 +476,7 @@ const studentsInfo = [
     joinedOn: "16.4.2018"
   },
   {
-    _id: 26,
+ 
     firstName: "Shora",
     lastName: "Jafar",
     title: "Integrify Trainee",
@@ -491,7 +491,7 @@ const studentsInfo = [
     joinedOn: "23/4/2018"
   },
   {
-    _id: 27,
+  
     firstName: "Bojan ",
     lastName: "Mitic",
     title: "Junior Developer",
@@ -515,7 +515,7 @@ const studentsInfo = [
     joinedOn: "16.4.2018."
   },
   {
-    _id: 28,
+   
     firstName: "Quynh",
     lastName: "Le",
     title: "trainee",
@@ -531,7 +531,7 @@ const studentsInfo = [
   },
 
   {
-    _id: 29,
+
     firstName: "Aditya",
     lastName: "Rana",
     title: "Front-end Web developer Trainee",
@@ -547,7 +547,7 @@ const studentsInfo = [
     joinedOn: "16.4.2018"
   },
   {
-    _id: 30,
+  
     firstName: "Saidur ",
     lastName: "Rahman",
     title: "Trainee Web Developer",
@@ -564,7 +564,7 @@ const studentsInfo = [
   },
 
   {
-    _id: 31,
+    
     firstName: "Long ",
     lastName: "Nghiem",
     title: "Integrify Trainee",
@@ -579,7 +579,7 @@ const studentsInfo = [
     joinedOn: "April 1, 2018"
   },
   {
-    _id: 32,
+    
     firstName: "Rojak",
     lastName: "Amtya",
     title: "Trainee",
@@ -596,7 +596,7 @@ const studentsInfo = [
   },
 
   {
-    _id: 33,
+    
     firstName: "Yasir",
     lastName: "Akbar",
     title: "Web Developer Trainee",
@@ -612,7 +612,7 @@ const studentsInfo = [
     joinedOn: "16.04.2018"
   },
   {
-    _id: 34,
+   
     firstName: "Arifa Begam",
     lastName: "Mujawar",
     title: "Junior Front-end Developer",
@@ -642,7 +642,7 @@ const studentsInfo = [
     joinedOn: "16.04.2018"
   },
   {
-    _id: 35,
+    
     firstName: "Mouhssine",
     lastName: "Idrissi Akhelij",
     title: "Trainee at Integrify",
@@ -659,7 +659,7 @@ const studentsInfo = [
   },
 
   {
-    _id: 36,
+    
     firstName: "Zsuzsanna",
     lastName: "Bakos",
     title: "Trainee",
@@ -677,7 +677,7 @@ const studentsInfo = [
   },
 
   {
-    _id: 37,
+   
     firstName: "Khanh",
     lastName: "Dang",
     title: "Trainee",
@@ -693,7 +693,7 @@ const studentsInfo = [
     joinedOn: "20-04-2018"
   },
   {
-    _id: 38,
+    
     firstName: "Abdi",
     lastName: "Muleta",
     title: "Developer and Partnerships Lead",

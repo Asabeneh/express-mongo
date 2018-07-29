@@ -22,7 +22,7 @@
         <% studentsInfo.forEach(function(student){ %>
     <div>
         <div class="image">
-                <h2><%= student._id %> . <%= student.firstName %> <%= student.lastName %></h2>
+                <h2><%= student.firstName %> <%= student.lastName %></h2>
                 <a href="/students/<%= student._id %>">
                     <img src="/images/<%= student.src %>">
                 </a>
